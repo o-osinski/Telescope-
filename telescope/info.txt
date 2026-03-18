@@ -1,0 +1,6 @@
+Useful link :
+https://aladin.cds.unistra.fr/AladinLite/doc/#mobile-apps
+
+https://cds-astro.github.io/aladin-lite/
+
+https://github.com/laheller/CDS_Aladin/blob/master/MainActivity.cs

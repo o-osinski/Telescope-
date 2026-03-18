@@ -1,15 +1,13 @@
-import 'package:telescope/data/constants.dart';
-
 class SpatialObject  {
-  SpatialObjectType type;
+  String id;
   String name;
   double coordX;
   double coordY;
   double distance;
 
-  SpatialObject(this.type,this.name,this.coordX,this.coordY,this.distance);
+  SpatialObject(this.id,this.name,this.coordX,this.coordY,this.distance);
 
-  SpatialObjectType getType() => type;
+  String getId() => id;
   String getName() => name;
   List<double> getCoord() => [coordX,coordY];
   double getDistance() => distance;

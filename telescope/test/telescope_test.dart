@@ -1,5 +1,5 @@
 // Import the test package and Counter class
-import 'package:telescope/data/classes/Telescope.dart';
+import 'package:telescope/data/classes/telescope.dart';
 import 'package:test/test.dart';
 
 void main() {

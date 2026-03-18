@@ -1,14 +1,10 @@
 // Import the test package and Counter class
 import 'package:telescope/data/classes/spatial_object.dart';
-import 'package:telescope/data/constants.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('getType, getCoord, getDistance', () {
-    SpatialObject sun = SpatialObject(SpatialObjectType.star,"sun",0.0,0.0,0.0);
-    test('Get type : should be star', () {
-      expect(sun.getType(), SpatialObjectType.star);
-    });
+    SpatialObject sun = SpatialObject("0","sun",0.0,0.0,0.0);
 
     test('Get name : should be sun', () {
       expect(sun.getName(), "sun");

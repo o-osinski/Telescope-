@@ -4,11 +4,11 @@ class Telescope {
 
   Telescope(this.coordX,this.coordY,this.orientation,this.tilt);
 
-  List<double> getCoord() => [this.coordX,this.coordY];
+  List<double> getCoord() => [coordX,coordY];
 
-  double getOrientation() => this.orientation;
+  double getOrientation() => orientation;
 
-  double getTilt() => this.tilt;
+  double getTilt() => tilt;
 
   void setCoord(double x,double y) {
     coordX = x; 
