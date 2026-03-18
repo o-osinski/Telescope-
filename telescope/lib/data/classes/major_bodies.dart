@@ -5,6 +5,10 @@ class MajorBodies  {
 
   MajorBodies(this.majorBodies);
 
+  void setMajorBodies(List<SpatialObject> mb){
+    majorBodies = mb;
+  }
+
   factory MajorBodies.fromJson(Map<String, dynamic> json) {
     String result = json['result'];
     var i =0;
@@ -32,7 +36,7 @@ class MajorBodies  {
             if ((majorBody.substring(k,k+2)=="  ")){
               majorBodyDesignation = majorBody.substring(11,k);
               if (majorBodyDesignation != " "){
-                listMajorBodies.add(SpatialObject(majorBodyId,majorBodyDesignation,0,0,0));
+                listMajorBodies.add(SpatialObject(majorBodyId,majorBodyDesignation,0,0,0,""));
               }
               startDataBody = j+1;
               break;
@@ -40,7 +44,12 @@ class MajorBodies  {
           }
         } 
       }
-
+    listMajorBodies.sort((a, b) => a.name.compareTo(b.name));
     return MajorBodies(listMajorBodies);
+  }
+
+  String decode(Map<String, dynamic> json){
+    String result = json['result'];
+    return result;
   }
 }

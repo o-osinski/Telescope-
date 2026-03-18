@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 
 void main() {
   group('getType, getCoord, getDistance', () {
-    SpatialObject sun = SpatialObject("0","sun",0.0,0.0,0.0);
+    SpatialObject sun = SpatialObject("0","sun",0.0,0.0,0.0,"");
 
     test('Get name : should be sun', () {
       expect(sun.getName(), "sun");
