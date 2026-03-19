@@ -5,8 +5,7 @@ class SearchBarAppState extends StatelessWidget {
   SearchBarAppState({super.key});
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Padding(
+    return Padding(
           padding: const EdgeInsets.all(8.0),
           child: SearchAnchor(
             builder: (BuildContext context, SearchController controller) {
@@ -19,7 +18,7 @@ class SearchBarAppState extends StatelessWidget {
             },
             suggestionsBuilder:
                 (BuildContext context, SearchController controller) {
-                  return List<ListTile>.generate(5, (int index) {
+                  return List<ListTile> .generate(5, (int index) {
                     final String item = 'item $index';
                     return ListTile(
                       title: Text(item),
@@ -30,7 +29,6 @@ class SearchBarAppState extends StatelessWidget {
                   });
                 },
           ),
-        ),
-      );
+        );
   }
   }

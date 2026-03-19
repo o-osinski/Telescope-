@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:telescope/widgets/modal.dart';
 import 'package:telescope/widgets/searchbar.dart';
+import 'package:telescope/widgets/floatingbutton.dart';
 
 
 void main() => runApp(const MyApp());
@@ -21,23 +22,32 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    
     return MaterialApp(
-      theme: ThemeData(colorSchemeSeed: const Color(0xff6750a4),brightness: isDark ? Brightness.dark : Brightness.light,),
+      theme: ThemeData(colorSchemeSeed: const Color(0xff6750a4),brightness: isDark ? Brightness.dark : Brightness.light),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(title: const Text('Fetch Data Telescope')),
-        body: Container( 
+        body: SingleChildScrollView(
+          child : Column(
+            children: [
+              SearchBarAppState(),
+              BottomSheetExample(),
+            ] 
+          ),
+        ),
+        floatingActionButton: FloatingActionButtonExample(),
+      ),
+      );
+      //Container( 
           // BoxDecoration takes the image
-          decoration: BoxDecoration( 
+          /*decoration: BoxDecoration( 
             // Image set to background of the body
             image: DecorationImage( 
-              image: AssetImage("background.jpg"), fit: BoxFit.cover
+              image: AssetImage('back.jpg')
             ),
-          ),
-          child : BottomSheetExample(),
-        ),
-      ),
-    );
+          ),*/
+    //);
   }
 }
 
