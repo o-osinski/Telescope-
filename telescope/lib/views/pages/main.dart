@@ -23,11 +23,21 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(colorSchemeSeed: const Color(0xff6750a4),brightness: isDark ? Brightness.dark : Brightness.light,),
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(title: const Text('Fetch Data Telescope')),
-        body: BottomSheetExample(),
+        body: Container( 
+          // BoxDecoration takes the image
+          decoration: BoxDecoration( 
+            // Image set to background of the body
+            image: DecorationImage( 
+              image: AssetImage("background.jpg"), fit: BoxFit.cover
+            ),
           ),
-      );
+          child : BottomSheetExample(),
+        ),
+      ),
+    );
   }
 }
 

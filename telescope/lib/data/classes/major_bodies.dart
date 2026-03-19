@@ -50,6 +50,21 @@ class MajorBodies  {
 
   String decode(Map<String, dynamic> json){
     String result = json['result'];
+    bool startFound = false;
+    int startIndex=0;
+    int endIndex=0;
+    for (var i=0;i<result.length-3;i++){
+      if (result.substring(i,i+2) == '*\n' && !startFound){
+        startIndex = i+2;
+        startFound = true;
+      }
+      else if (result.substring(i,i+2) == "\n*" && startFound){
+        endIndex = i-1;
+        break;
+      }
+    }
+    result = result.substring(startIndex,endIndex);
+    
     return result;
   }
 }
