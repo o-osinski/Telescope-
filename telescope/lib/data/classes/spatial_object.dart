@@ -1,15 +1,15 @@
 class SpatialObject  {
   String id;
   String name;
-  double coordX;
-  double coordY;
+  List coord;
   double distance;
   String designation;
 
-  SpatialObject(this.id,this.name,this.coordX,this.coordY,this.distance,this.designation);
+  SpatialObject(this.id,this.name,this.coord,this.distance,this.designation);
 
   String getId() => id;
   String getName() => name;
-  List<double> getCoord() => [coordX,coordY];
+  List<dynamic> getCoord() => coord;
+  void setCoord(List coordInput) => coord = coordInput;
   double getDistance() => distance;
 }

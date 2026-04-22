@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:telescope/data/constants.dart';
 // ignore: must_be_immutable
 class SearchBarAppState extends StatelessWidget {
   bool isDark = false;
@@ -14,19 +15,27 @@ class SearchBarAppState extends StatelessWidget {
                 padding: const WidgetStatePropertyAll<EdgeInsets>(
                   EdgeInsets.symmetric(horizontal: 16.0),
                 ),
+                onSubmitted: (query) {
+                  filteredBodies= [];
+                  int start = 0;
+                  if (query.isEmpty){
+                    filteredBodies= [];
+                  }
+                  else {
+                  for (var i=0;i<query.length;i++){
+                    if (query.substring(i) == " "){
+                      filteredBodies.add(query.substring(start,i));
+                      start = i;
+                    }
+                  }
+                  filteredBodies.add(query.substring(start,query.length));
+                  }
+                },
               );
             },
             suggestionsBuilder:
                 (BuildContext context, SearchController controller) {
-                  return List<ListTile> .generate(5, (int index) {
-                    final String item = 'item $index';
-                    return ListTile(
-                      title: Text(item),
-                      onTap: () {
-                          controller.closeView(item);
-                      },
-                    );
-                  });
+                  return bodies;
                 },
           ),
         );

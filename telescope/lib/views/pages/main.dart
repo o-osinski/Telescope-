@@ -3,8 +3,25 @@ import 'package:telescope/widgets/modal.dart';
 import 'package:telescope/widgets/searchbar.dart';
 import 'package:telescope/widgets/floatingbutton.dart';
 
+//REMOVE BEFORE PROD
+import 'dart:io';
 
-void main() => runApp(const MyApp());
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
+}
+
+void main() {
+  HttpOverrides.global = MyHttpOverrides();
+  runApp(MyApp());
+}
+//
+
+//void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});

@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 
 void main() {
   group('Test getCoord, getOrientation, getTilt', () {
-    Telescope myTelescope = Telescope(50.0, 50.0, 100.0, 350.0);
+    Telescope myTelescope = Telescope(50.0, 50.0, [100.0], [350.0]);
     test('Test getCoord, Should have [50.0,50.0]', () {
       expect(myTelescope.getCoord(),[50.0,50.0]);
     });
@@ -19,10 +19,10 @@ void main() {
   });
 
     group('Test setCoord, setOrientation, setTilt', () {
-    Telescope myTelescope = Telescope(50.0, 50.0, 100.0, 350.0);
+    Telescope myTelescope = Telescope(50.0, 50.0, [100.0], [350.0]);
     myTelescope.setCoord(20.0,30.0);
-    myTelescope.setOrientation(2.0);
-    myTelescope.setTilt(60.0);
+    myTelescope.setOrientation([2.0]);
+    myTelescope.setTilt([60.0]);
     test('Test getCoord, Should have [50.0,50.0]', () {
       expect(myTelescope.getCoord(),[20.0,30.0]);
     });
