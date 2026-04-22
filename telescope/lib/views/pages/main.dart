@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:telescope/widgets/modal.dart';
 import 'package:telescope/widgets/searchbar.dart';
 import 'package:telescope/widgets/floatingbutton.dart';
-
-//REMOVE BEFORE PROD
 import 'dart:io';
 
 class MyHttpOverrides extends HttpOverrides {
@@ -17,11 +15,8 @@ class MyHttpOverrides extends HttpOverrides {
 
 void main() {
   HttpOverrides.global = MyHttpOverrides();
-  runApp(MyApp());
+  runApp(const MyApp());
 }
-//
-
-//void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -32,41 +27,34 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool isDark = false;
-  @override
-  void initState() {
-    super.initState();
-  }
+  String filterQuery = "";
 
   @override
   Widget build(BuildContext context) {
-    
     return MaterialApp(
-      theme: ThemeData(colorSchemeSeed: const Color(0xff6750a4),brightness: isDark ? Brightness.dark : Brightness.light),
+      theme: ThemeData(
+        colorSchemeSeed: const Color(0xff6750a4),
+        brightness: isDark ? Brightness.dark : Brightness.light,
+      ),
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(title: const Text('Fetch Data Telescope')),
         body: SingleChildScrollView(
-          child : Column(
+          child: Column(
             children: [
-              SearchBarAppState(),
-              BottomSheetExample(),
-            ] 
+              SearchBarAppState(
+                onSearch: (String query) {
+                  setState(() {
+                    filterQuery = query;
+                  });
+                },
+              ),
+              BottomSheetExample(filterQuery: filterQuery),
+            ],
           ),
         ),
         floatingActionButton: FloatingActionButtonExample(),
       ),
-      );
-      //Container( 
-          // BoxDecoration takes the image
-          /*decoration: BoxDecoration( 
-            // Image set to background of the body
-            image: DecorationImage( 
-              image: AssetImage('back.jpg')
-            ),
-          ),*/
-    //);
+    );
   }
 }
-
-
-

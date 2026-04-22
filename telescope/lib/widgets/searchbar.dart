@@ -1,43 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:telescope/data/constants.dart';
-// ignore: must_be_immutable
-class SearchBarAppState extends StatelessWidget {
-  bool isDark = false;
-  SearchBarAppState({super.key});
+
+class SearchBarAppState extends StatefulWidget {
+  final Function(String) onSearch;
+  const SearchBarAppState({super.key, required this.onSearch});
+
+  @override
+  State<SearchBarAppState> createState() => _SearchBarAppStateState();
+}
+
+class _SearchBarAppStateState extends State<SearchBarAppState> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: SearchAnchor(
-            builder: (BuildContext context, SearchController controller) {
-              return SearchBar(
-                controller: controller,
-                padding: const WidgetStatePropertyAll<EdgeInsets>(
-                  EdgeInsets.symmetric(horizontal: 16.0),
-                ),
-                onSubmitted: (query) {
-                  filteredBodies= [];
-                  int start = 0;
-                  if (query.isEmpty){
-                    filteredBodies= [];
-                  }
-                  else {
-                  for (var i=0;i<query.length;i++){
-                    if (query.substring(i) == " "){
-                      filteredBodies.add(query.substring(start,i));
-                      start = i;
-                    }
-                  }
-                  filteredBodies.add(query.substring(start,query.length));
-                  }
-                },
-              );
+      padding: const EdgeInsets.all(8.0),
+      child: SearchAnchor(
+        builder: (BuildContext context, SearchController controller) {
+          return SearchBar(
+            controller: controller,
+            padding: const WidgetStatePropertyAll<EdgeInsets>(
+              EdgeInsets.symmetric(horizontal: 16.0),
+            ),
+            onSubmitted: (query) {
+              widget.onSearch(query);
             },
-            suggestionsBuilder:
-                (BuildContext context, SearchController controller) {
-                  return bodies;
-                },
-          ),
-        );
+          );
+        },
+        suggestionsBuilder: (BuildContext context, SearchController controller) {
+          return [];
+        },
+      ),
+    );
   }
-  }
+}
